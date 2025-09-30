@@ -28,15 +28,36 @@
     header { margin-bottom: 1.25rem; }
     h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0; }
     p { margin: 0 0 1rem; font-size: 1.25rem; }
+    .heart-wrapper { margin-top: 1.5rem; display: flex; justify-content: center; }
+    .heart {
+      font-size: clamp(3rem, 10vw, 5rem);
+      cursor: pointer;
+      user-select: none;
+      transition: transform .2s ease, opacity .2s ease;
+      display: inline-block;
+    }
+    .heart.pulse { transform: scale(1.1); }
+    .heart.exploding {
+      animation: heart-explode .8s forwards;
+      pointer-events: none;
+    }
+    @keyframes heart-explode {
+      0% { transform: scale(1); opacity: 1; }
+      60% { transform: scale(2.75); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
     footer { margin-top: 2rem; color: var(--muted); font-size: .9rem; }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>For Anna ❤️</h1>
+      <h1>For Anna</h1>
     </header>
     <p>It has been <span id="days"></span> days since our anniversary (August 16, 2025).</p>
+    <div class="heart-wrapper">
+      <span id="heart" class="heart" role="button" aria-live="polite" aria-label="Playful heart game">❤️</span>
+    </div>
     <footer>
       <span>© <span id="y"></span> Cameron Choi</span>
     </footer>
@@ -48,6 +69,40 @@
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     document.getElementById('days').textContent = diffDays;
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    const heart = document.getElementById('heart');
+    let heartClicks = 0;
+    let exploding = false;
+
+    const resetHeart = () => {
+      heart.classList.remove('exploding');
+      heart.style.removeProperty('transform');
+      heartClicks = 0;
+      exploding = false;
+    };
+
+    heart.addEventListener('click', () => {
+      if (exploding) return;
+
+      heartClicks += 1;
+      heart.classList.add('pulse');
+
+      setTimeout(() => {
+        heart.classList.remove('pulse');
+      }, 150);
+
+      if (heartClicks >= 5) {
+        exploding = true;
+        heart.classList.remove('pulse');
+        heart.classList.add('exploding');
+      }
+    });
+
+    heart.addEventListener('animationend', (event) => {
+      if (event.animationName === 'heart-explode') {
+        resetHeart();
+      }
+    });
   </script>
 </body>
 </html>
