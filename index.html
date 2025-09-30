@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cameron Choi — Software Engineer</title>
+  <meta name="description" content="Cameron Choi is a software engineer in New York City building piggi and systems at AWS." />
+  <meta property="og:title" content="Cameron Choi — Software Engineer" />
+  <meta property="og:description" content="Software engineer in NYC. Building piggi and systems at AWS." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0b0b0b;
+      --muted: #555;
+      --link: #0a66c2; /* LinkedIn blue-ish for accessibility */
+      --wrap: 46rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0b0b0b; --fg: #f2f2f2; --muted: #b3b3b3; --link: #4ea1ff; }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; padding: 2rem; background: var(--bg); color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+      display: grid; place-items: center;
+    }
+    main { width: 100%; max-width: var(--wrap); }
+    header { margin-bottom: 1.25rem; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin: 0; }
+    .kicker { margin: .25rem 0 0; color: var(--muted); }
+    p { margin: 0 0 1rem; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid currentColor; display: inline-flex; align-items: center; gap: .4rem; }
+    a:hover { opacity: .85; }
+    nav { margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .link-pill { padding: .5rem .8rem; border: 1px solid currentColor; border-radius: 999px; }
+    footer { margin-top: 2rem; color: var(--muted); font-size: .9rem; }
+    svg { width: 1em; height: 1em; fill: currentColor; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Cameron Choi</h1>
+      <p class="kicker">Software engineer in New York City</p>
+    </header>
+
+    <section aria-label="About Cameron">
+      <p>Hi, I’m Cameron. I’m a software engineer living in New York City. I fell in love with coding back in high school and have been building things ever since. I’ve worked everywhere from scrappy early-stage startups (Tertiary Tech, Strong Compute), to fintech and financial services (Maia Financial, Airwallex), to big tech companies like TikTok and now AWS. Outside of work, I’m building <a href="https://joinpiggi.com" target="_blank" rel="noopener">piggi</a> — a platform that helps people earn rewards for paying off their student loans.</p>
+
+      <nav aria-label="Links">
+        <a class="link-pill" href="https://www.linkedin.com/in/cameronchoi/" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-340C24.1 108 0 83.5 0 53.6 0 23.3 24.1 0 53.8 0c29.7 0 53.8 23.3 53.8 53.6 0 29.9-24.1 54.4-53.8 54.4zM447.9 448h-92.4V304.1c0-34.3-.7-78.5-47.8-78.5-47.8 0-55.1 37.3-55.1 75.9V448h-92.4V148.9h88.8v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+          LinkedIn
+        </a>
+        <a class="link-pill" href="mailto:cameronjchoi@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"><path d="M502.3 190.8 327.4 338c-15.9 13.3-39.1 13.3-55 0L9.7 190.8C3.9 186.5 0 179.6 0 172.2 0 150.5 17.9 132.6 39.7 132.6h432.6c21.8 0 39.7 17.9 39.7 39.6 0 7.4-3.9 14.3-9.7 18.6zM0 213.6v165.8c0 21.8 17.9 39.7 39.7 39.7h432.6c21.8 0 39.7-17.9 39.7-39.7V213.6L327.4 360.4c-31.8 26.6-77.9 26.6-109.7 0L0 213.6z"/></svg>
+          Email
+        </a>
+      </nav>
+    </section>
+
+    <footer>
+      <span>© <span id="y"></span> Cameron Choi</span>
+    </footer>
+  </main>
+
+  <script>
+    // Fill current year for the footer, keeping markup minimal.
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
